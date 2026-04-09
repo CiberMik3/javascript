@@ -25,5 +25,5 @@ Entrada --> Processamento --> Saída
 | Operador | Proposito | Exemplo | Resultado |
 |----------|-----------|---------|-----------|
 | = | Atribuir um valor | x = 10 | x = 10 |
-| + | somar | 10 + 5 | 15 |
+| + | Somar | 10 + 5 | 15 |
 | += | Somar e atribuir | x += 5 | x = 15 |
