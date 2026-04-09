@@ -17,4 +17,13 @@ Variáveis são espaços na memória do computador usados para guardar valores q
 ```mermaid
 graph LR
 Memória
+Entrada --> Processamento --> Saída
 ```
+
+## Operadores Aritméticos
+
+| Operador | Proposito | Exemplo | Resultado |
+|----------|-----------|---------|-----------|
+| = | Atribuir um valor | x = 10 | x = 10 |
+| + | somar | 10 + 5 | 15 |
+| += | Somar e atribuir | x += 5 | x = 15 |
