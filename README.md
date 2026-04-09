@@ -6,3 +6,11 @@
 Repositório usado para estudo da lógica de progamação com uso da linguagem JavaScript
 ## Autor
 Mike de oliveira
+
+---
+## Variáveis
+Variáveis são espaços na memória do computador usados para guardar valores que podem alterar ao longo do programa.
+### Principais tipos primitivos:
+-Strings (texto)
+-Number (Números inteiros e não interiros)
+-boolean (verdadeiro ou falso)
