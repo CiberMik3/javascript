@@ -29,6 +29,7 @@ console.log("Variavel do tipo boolean")
 let vip = true
 console.log(vip)
 console.log(typeof(vip))
+console.log( )
 
 console.log("")
 console.log("------------------------")
@@ -40,6 +41,13 @@ console.log(`Idade: ${idade}`)
 console.log(`peso: ${peso}kg`)
 console.log(`altura: ${altura}`)
 console.log(`vip: ${vip}`)
+console.log(`fcm: ${208 - (0.7 * idade)}`)
+/**
+ * .toFixed(2) formata o resultado em 2 casas decimais
+ */
+console.log(`imc: ${peso / (altura * altura).toFixed(2)}`)
+
+
 console.log("------------------------")
 
 
