@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "colors": "^1.4.0",
+    "colors.js": "^1.2.4",
+    "prompt-sync": "^4.2.0"
+  }
+}
