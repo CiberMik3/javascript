@@ -1,0 +1,57 @@
+Exercício 1:
+Desenvolver no scratch um APP para calcular FCM (frequência cardíaca máxima) usando a formula de tanaka.
+
+fcm = 208 - (0.7 * idade)
+
+Variáveis:
+fcm, idade (number)
+
+entrada:
+idade
+
+processamento
+fcm = 208 - (0.7 * idade)
+
+saída:
+fcm 
+bpm
+-------------------------------
+Exercício 2:
+PT-1: Desenvolver um app no scratch para calcular o IMC (
+PT-2: Na ficha do aluno adicionar o IMC 
+
+IMC = peso / (altura * altura)
+
+ou                 
+                   2
+IMC = peso / altura
+
+Variáveis:
+imc, altura, peso (numebr)
+
+entrada:
+peso, altura
+
+processamento:
+IMC = peso / (altura * altura)
+
+saída:
+imc
+
+----------------
+Exercício 3:
+
+ Cálculo do consumo de combustível:
+Desenvolva um programa que calcule o consumo médio de combustível de um carro. O usuário deve inserir a distância percorrida e a quantidade de combustível consumido. O programa deve calcular e exibir o consumo médio (km/l).
+
+// variáveis
+distancia, litros, consumo
+
+// entrada
+distancia, litros
+
+// processamento
+consumo = distancia / litros
+
+// saída
+consumo

@@ -9,8 +9,8 @@ const prompt = require('prompt-sync')()
 let distancia, litros, consumo
 
 //entrada
-distancia = Number(prompt("qual a distancia percorrida? "))
-litros = Number(prompt("quanto de combustivel foi usado?"))
+distancia = Number(prompt("Qual a distancia percorrida? "))
+litros = Number(prompt("Quanto de combustivel foi usado? "))
 
 //processamento
 consumo = distancia / litros 
