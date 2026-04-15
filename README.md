@@ -36,3 +36,20 @@ Entrada --> Processamento --> Saída
 | ++ | Somar 1 ao resultado | x ++ | 11 |
 | -- | Subtrair 1 do resultado | x-- | 10 |
 | % | Resto da divisão | 10 % 3 | 1 |
+
+## Operadores logicos
+| Comparador | Simbologia  |
+|------------|-------------|
+| AND | && |
+| OR | \| \| |
+| NOT | ! |
+
+## Comparadores
+| Comparador | Significado |
+|------------|-------------|
+| > | Maior que |
+| >= | Maior ou igual a |
+| < | Menor que |
+| <= | Menor ou igual a | 
+| === | Idêntico a |
+| !== | Nao idêntico a |
