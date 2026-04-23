@@ -17,4 +17,4 @@ altura = Number(prompt("Digite qaul é a altura: "))
 
 volume = (comprimento * largura * altura) / 1000
 
-console.log  (`O volume é: ${volume}`)
+console.log(`O volume é: ${volume}`)
