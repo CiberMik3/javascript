@@ -96,19 +96,13 @@ switch (valor) {
   for (let i = 1; i < 10; i++) {
     // o código e repetido enquato a consição for verdadeira
   }
-    
+
+while (condição) {
+  // o código e repetido enquato a consição for verdadeira
+}
+
+do {
+  // o codigo é executado uma vez independente da condição
+  // o código e repetido enquato a consição for verdadeira
+} while (condição) 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
