@@ -102,7 +102,7 @@ while (condição) {
 }
 
 do {
-  // o codigo é executado uma vez independente da condição
+  // o codigo é executado uma vez independente da condição, depois
   // o código e repetido enquato a consição for verdadeira
 } while (condição) 
 ```
