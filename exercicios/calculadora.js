@@ -30,6 +30,10 @@ function dividir(num1, num2) {
 function raizQuadrada(num1) {
     return Math.sqrt(num1)
 }
+function Porcentagem(num1, num2) {
+    return (num1 * num2) / 100
+}
+
 
 //======================================
 //Função principal (main)
@@ -41,7 +45,7 @@ function iniciarCalculadora() {
         opcao = Number(prompt("Escolha uma opção: "))
         switch (opcao) {
             case 0:
-                console.log("Calculadora encerrada.".bgBlack)
+                console.log("Calculadora encerrada.".red)
                 return //Encerra o looping infinito
             case 1:
                 num1 = Number(prompt("Digite o primeiro numero: "))
@@ -67,26 +71,31 @@ function iniciarCalculadora() {
                 num1 = Number(prompt("Digite o numero desejaso: "))
                 resultado = raizQuadrada(num1)
                 break
+            case 6:
+                num1 = Number(prompt("Digite o valor da porcentagem: "))
+                num2 = Number(prompt("Digite o valor a ser calculado: "))
+                resultado = Porcentagem(num1, num2)
+                break
             default:
-            console.log("Operaçao invalida".bgRed)
-            prompt("Precione [enter] para continuar")
-            continue //Continua dentro do switch case
+                console.log("Operaçao invalida".bgRed)
+                prompt("Precione [enter] para continuar")
+                continue //Continua dentro do switch case
         }
-        console.log(`Resultado ${resultado.toFixed(1)}`)
-        prompt ("Precione [Enter] para continuar.")
+        console.log(`Resultado ${resultado.toFixed(2)}`)
+        prompt("Precione [Enter] para continuar.")
     } while (true)
 }
 //Função menu
 function mostrarMenu() {
     console.clear()
     console.log(">> Cauculadora <<".green)
-    console.log("1. Somar")
-    console.log("2. Subtrair")
-    console.log("3. Multiplicar")
-    console.log("4. Dividir")
-    console.log("5. Raiz quadrada")
-    console.log("6. Porcentagem")
-    console.log("0. Sair")
+    console.log("1. Somar         ".bgBlack)
+    console.log("2. Subtrair      ".bgBlack)
+    console.log("3. Multiplicar   ".bgBlack)
+    console.log("4. Dividir       ".bgBlack)
+    console.log("5. Raiz quadrada ".bgBlack)
+    console.log("6. Porcentagem   ".bgBlack)
+    console.log("0. Sair          ".bgBlack)
 }
 
 //Executar a função principal
