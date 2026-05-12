@@ -5,11 +5,13 @@
 const prompt = require('prompt-sync')()
 const colors = require('colors')
 
+//====================================================================================================
 //variaveis globais
 let num1, num2, opcao, resultado
 
 console.clear()
 
+//====================================================================================================
 //funções das operações (com parâmetros) Recomendado antes da função principal
 function somar(num1, num2) {
     return num1 + num2
@@ -35,7 +37,7 @@ function Porcentagem(num1, num2) {
 }
 
 
-//======================================
+//====================================================================================================
 //Função principal (main)
 function iniciarCalculadora() {
     //gerando um looping infinito (UX)
@@ -85,6 +87,7 @@ function iniciarCalculadora() {
         prompt("Precione [Enter] para continuar.")
     } while (true)
 }
+//====================================================================================================
 //Função menu
 function mostrarMenu() {
     console.clear()
@@ -97,6 +100,6 @@ function mostrarMenu() {
     console.log("6. Porcentagem   ".bgBlack)
     console.log("0. Sair          ".bgBlack)
 }
-
+//====================================================================================================
 //Executar a função principal
 iniciarCalculadora()
