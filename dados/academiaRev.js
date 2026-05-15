@@ -4,16 +4,13 @@
  * @author Mike de oliveira
  */
 
-// Importação de pacotes
 const prompt = require('prompt-sync')()
 const colors = require('colors')
 
-// Variaveis globais
 let nome, idade, peso, altura, vip
-let matricula = 1 // Contador de matricula
+let matricula = 1
 let opcaoMenu, opcaoConsulta, opcaoRelatorio, bsuca
 
-// Array principal (estrutura de dados)
 let alunos = []
 /*
     Estrutura de dados
@@ -25,9 +22,7 @@ let alunos = []
     [5] Vip
 */
 
-// Main >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>v
 function mainAcademia() {
-    // Menu principal
     do {
         console.clear()
         console.log(" _____           _           _           __ _____")
@@ -43,9 +38,7 @@ function mainAcademia() {
         console.log("6. Relatórios")
         console.log("0. Sair")
         console.log("")
-
         opcaoMenu = Number(prompt("Escolha: "))
-
         switch (opcaoMenu) {
             case 1:
                 cadrastarAluno()
@@ -75,16 +68,11 @@ function mainAcademia() {
         }
     } while (opcaoMenu !== 0)
 }
-// Main ( Fim ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-// CRUD - Create >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function cadrastarAluno() {
     console.clear()
     console.log("=== CADASTRO DE ALUNOS ===".underline)
     console.log()
-
-    // Lógica principal
     nome = prompt("Nome: ")
     idade = Number(prompt("Idade: "))
     peso = Number(prompt("Peso: "))
@@ -92,14 +80,13 @@ function cadrastarAluno() {
     vip = prompt("Aluno VIP (s/n)?: ")
     if (vip === "s") {
         vip = true
-    } else if (vip === "n"){
+    } else if (vip === "n") {
         vip = false
     } else {
-        console.log("Erro! Aluno nao cadastrado")
+        console.log("Erro! aluno nao cadastrado".red)
+        prompt("Precione [ENTER] para voltar...")
         return
     }
-
-    // Adicionar os dados na matriz
     alunos.push([
         matricula,
         nome,
@@ -108,24 +95,13 @@ function cadrastarAluno() {
         altura,
         vip
     ])
-
-    matricula++ // Auto incremento da matricula
-
+    matricula++
     console.log()
     console.log("Aluno(a) cadastrado(a) com sucesso")
-
-
     prompt("ENTER...")
-
 }
 
-// CRUD - Create ( Fim ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-// CRUD - Read >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function consultarAlunos() {
-
-    // Sub Menu
     do {
         console.clear()
         console.log("=== CONSULTA DE ALUNOS ===".underline)
@@ -135,7 +111,6 @@ function consultarAlunos() {
         console.log("0. Voltar")
 
         opcaoConsulta = Number(prompt("Escolha: "))
-
 
         switch (opcaoConsulta) {
             case 1:
@@ -151,30 +126,20 @@ function consultarAlunos() {
                 console.log("Opção invalida")
                 prompt("Enter...")
         }
-
     } while (opcaoConsulta !== 0);
 
-    // Buscar aluno
     function buscarAluno() {
         console.clear()
         console.log("=== BUSCAR ALUNO ===")
         console.log()
-
-        // Logica principal ( Busca pelo nome )
-        // toLowerCase -> Converter tudo em letras minúsculas
         busca = prompt("Digite o nome do aluno: ").toLowerCase()
 
-        // Pesquisa(filtro) na estrutura de dados
         let encontrados = alunos.filter((a) => {
             return a[1].toLowerCase().includes(busca)
         })
-
-        // Validação
         if (encontrados.length === 0) {
             console.log("Aluno nao encontrado...")
         } else {
-            // Criando um cabeçario para a tabela
-            //console.table(alunosOrdenados)
             let alunosEncontrados = encontrados
                 .map((a) => {
                     return {
@@ -185,34 +150,24 @@ function consultarAlunos() {
                         altura: a[4],
                         VIP: a[5]
                     }
-
                 })
             console.table(alunosEncontrados)
         }
         console.log()
         prompt("ENTER...")
     }
-
-    // Listar aluno
     function listarAlunos() {
         console.clear()
         console.log("=== LISTA DE ALUNOS ===")
         console.log()
 
-        // Validação (se nenhum alunos cadastrado)
-        //// lengh = tamanho do vetor
         if (alunos.length === 0) {
             console.log("Nenhum aluno cadastrado".bgRed)
         } else {
-            // console.table(alunos)
-            // Ordenar os nomes (criar copia do array)
             let alunosOrdenados = [...alunos]
             alunosOrdenados.sort((a, z) => {
                 return a[1].localeCompare(z[1])
             })
-
-            // Criando um cabeçario para a tabela
-            //console.table(alunosOrdenados)
             let listaAlunos = alunosOrdenados
                 .map((a) => {
                     return {
@@ -226,14 +181,9 @@ function consultarAlunos() {
                 })
             console.table(listaAlunos)
         }
-
         prompt("Enter...")
     }
 }
-// CRUD - Read ( Fim ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-// CRUD - Update >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 function editarAluno() {
     console.clear()
@@ -241,20 +191,14 @@ function editarAluno() {
     console.log("")
 
     let buscaMatricula = Number(prompt("Digite a matrícula do aluno: "))
-
-    //buscar índice do aluno
     let indice = alunos.findIndex((a) => {
         return a[0] === buscaMatricula
     })
 
     console.log("")
-
-    //validar busca
     if (indice === -1) {
         console.log("Aluno não encontrado")
     } else {
-
-        //dados atuais
         console.log("Dados atuais:")
         console.log("")
         console.log(`Nome: ${alunos[indice][1]}`)
@@ -264,60 +208,40 @@ function editarAluno() {
         console.log(`VIP: ${alunos[indice][5]}`)
         console.log("")
 
-        //novos dados
         let novoNome = prompt("Novo nome: ")
         let novaIdade = Number(prompt("Nova idade: "))
         let novoPeso = Number(prompt("Novo peso: "))
         let novaAltura = Number(prompt("Nova altura: "))
         let novoVip = prompt("Aluno VIP? (s/n): ")
-
         if (novoVip === "s") {
             novoVip = true
         } else {
             novoVip = false
         }
-
-        //alteração
         alunos[indice][1] = novoNome
         alunos[indice][2] = novaIdade
         alunos[indice][3] = novoPeso
         alunos[indice][4] = novaAltura
         alunos[indice][5] = novoVip
         console.log("")
-
         prompt("ENTER...")
     }
-
 }
 
-// CRUD - Uptade ( Fim ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
-// CRUD - Delete >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function excluirAluno() {
     console.clear()
     console.log("=== EXCLUIR ALUNO ===".underline)
     console.log("")
     let buscaMatricula = Number(prompt("Digite a matrícula do aluno: "))
-
-    //buscar índice do aluno
     let indice = alunos.findIndex((a) => {
         return a[0] === buscaMatricula
     })
-
     console.log("")
-
-    //validar busca
     if (indice === -1) {
-
         console.log("Aluno não encontrado")
-
     } else {
-
-        //dados do aluno
         console.log("Aluno encontrado:")
         console.log("")
-
         console.log(`Matrícula: ${alunos[indice][0]}`)
         console.log(`Nome: ${alunos[indice][1]}`)
         console.log(`Idade: ${alunos[indice][2]}`)
@@ -326,11 +250,9 @@ function excluirAluno() {
         console.log(`VIP: ${alunos[indice][5]}`)
         console.log("")
 
-        //confirmação
         let confirmar = prompt("Confirmar exclusão? (s/n): ").toLowerCase()
         if (confirmar === "s") {
-            //excluir aluno
-            delete alunos[indice]
+            alinos.splice(indice, 1)
             console.log("")
             console.log("Aluno excluído com sucesso!")
         } else {
@@ -338,27 +260,20 @@ function excluirAluno() {
             console.log("Exclusão cancelada")
         }
     }
-
     console.log("")
     prompt("ENTER...")
 }
-// CRUD - Delete ( Fim ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-// Ficha do aluno >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function gerarFichaAluno() {
     console.clear()
     console.log("=== FICHA DO ALUNO ===".underline)
     console.log()
 
     let buscarMatricula = Number(prompt("Digite o numero da matricula do aluno: "))
-
-    // Logica principal (index da estrutura de dados)
     let indice = alunos.findIndex((a) => {
         return a[0] === buscarMatricula
     })
 
-    // Validação da busca (pelo index do aluno)
     if (indice === -1) {
         console.log("Aluno nao encontrado... ")
     } else {
@@ -368,15 +283,12 @@ function gerarFichaAluno() {
         altura = alunos[indice][4]
         vip = alunos[indice][5]
 
-        // Status vip
         let StatusVip
         if (vip === true) {
             StatusVip = "Sim (Direito a personal treiner)"
         } else {
             StatusVip = "Nao "
         }
-
-        // Calculos
         let fcm = (208 - (0.7 * idade)).toFixed(0)
         let agua = (peso * 35) / 1000
         let imc = (peso / (altura * altura))
@@ -397,7 +309,6 @@ function gerarFichaAluno() {
             statusImc = "Obesidade de grau III"
         }
 
-        // Exibição
         console.log("------------------------------------------------------------------")
         console.log("-                         FICHA DO ALUNO                         -")
         console.log("------------------------------------------------------------------")
@@ -413,20 +324,13 @@ function gerarFichaAluno() {
         console.log(`IMC: ${imc.toFixed(2)} ${statusImc}`)
         console.log(`Faixa de peso ideal: ${pesoIdealMinimo} Kg até ${pesoIdealMaximo}Kg`)
         console.log("------------------------------------------------------------------")
-
-
     }
-
     console.log()
     prompt("ENTER...")
 }
-// Ficha do aluno ( Fim ) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-// Relatorios >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function gerarRelatorios() {
     do {
-        //Sub Menu
         console.clear()
         console.log("=== RELATÓRIOS ===".underline)
         console.log()
@@ -436,7 +340,6 @@ function gerarRelatorios() {
         console.log("0. Voltar")
 
         opcaoRelatorio = Number(prompt("Escolha: "))
-
 
         switch (opcaoRelatorio) {
             case 1:
@@ -455,26 +358,20 @@ function gerarRelatorios() {
                 console.log("Opção invalida")
                 prompt("Enter...")
         }
-
     } while (opcaoRelatorio !== 0);
 
-    // Relatorio de alunos vip
     function gerarRelatorioVip() {
         console.clear()
         console.log("=== ALUNOS VIP ===".underline)
         console.log()
 
-        // Logica principal
-        // Filtrar
         let alunosVip = alunos.filter((a) => {
             return a[5] === true
         })
 
-        // Validação
         if (alunosVip.length === 0) {
             console.log("Nenhum aluno VIP encontrado")
         } else {
-            // Map "cabeçalho de tabela de alunos vip"
             let listaVip = alunosVip.map((a) => {
                 return {
                     matricula: a[0],
@@ -483,22 +380,18 @@ function gerarRelatorios() {
             })
             console.table(listaVip)
         }
-
         console.log()
         prompt("ENTER...")
     }
-    // Relatorio média de aidade dos alunos
     function gerarRelatorioMediaIdade() {
         console.clear()
         console.log("=== MEDIA DE IDADE ===".underline)
         console.log()
 
-        // Logica principal
         if (alunos.length === 0) {
             console.log("Nenhum aluno encontrado".bgRed)
         } else {
             let somaIdades = 0
-            // Laço de repetição
             alunos.forEach((a) => {
                 somaIdades += a[2]
             })
@@ -507,18 +400,13 @@ function gerarRelatorios() {
             console.log(`Média de idade: ${media.toFixed(0)} anos`.underline)
             console.log()
         }
-
         prompt("ENTER...")
     }
-    // Relatorio de percentural de IMC
     function gerarRelatorioImc() {
         console.clear()
         console.log("=== IMC DOS ALUNOS ===".underline)
         console.log()
-        //lógica principal (map() obter %imc da estrutura de dados )
-        //validação
 
-        //se nenhum aluno cadastrado
         if (alunos.length === 0) {
             console.log("Nenhum aluno cadastrado")
         } else {
@@ -539,12 +427,10 @@ function gerarRelatorios() {
                 }
             })
 
-            //cálculos
             let total = alunos.length
             let percAbaixo = ((abaixoPeso / total) * 100)
             let percNormal = ((pesoNormal / total) * 100)
             let percAcima = ((acimaPeso / total) * 100)
-            //mini gráfico
             let graficoAbaixo = "■".repeat(Math.round(percAbaixo / 2))
             let graficoNormal = "■".repeat(Math.round(percNormal / 2))
             let graficoAcima = "■".repeat(Math.round(percAcima / 2))
@@ -561,12 +447,8 @@ function gerarRelatorios() {
             console.log(graficoAcima)
             console.log("")
         }
-
         console.log("")
         prompt("ENTER...")
     }
 }
-//Relatórios (fim) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-//Iniciar o sistema
 mainAcademia()
